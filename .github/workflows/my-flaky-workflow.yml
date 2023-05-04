@@ -15,3 +15,8 @@ jobs:
       - name: "Fake intentional failing step"
         if: ${{ inputs.fail_intentionally }}
         run: exit 1
+      - name: 'Report status to chat'
+        if: always()
+        uses: 'drevell/hackathon-action@v12'
+        with:
+          webhook_url: '${{ vars.WEBHOOK_URL }}'
